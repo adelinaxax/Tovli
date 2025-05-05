@@ -67,4 +67,4 @@ body {
 }
 
 
-@import "templates/main-banner.css";
+@import "../components/main-banner/main-banner.css";
