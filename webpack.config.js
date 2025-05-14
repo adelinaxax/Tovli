@@ -7,22 +7,20 @@ module.exports = {
     entry: './src/index.ts',
 
     output: {
-        filename: 'js/[name].js',
+        filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
+    },
+    resolve: {
+        extensions: ['.js', '.ts']
     },
 
     module: {
         rules: [
+            { test: /\.(ts|tsx)$/, loader: "ts-loader" },
             {
-                test: /\.ts$/,
-                loader: "ts-loader"
-            },
-            {
-                test: /\.hbs$/,
-                use: {
-                    loader: 'handlebars-loader',
-                }
+                test: /\.hbs|html$/,
+                loader: 'handlebars-loader',
             },
             {
                 test: /\.css$/,
@@ -54,7 +52,6 @@ module.exports = {
             template: './src/index.hbs',
             filename: 'index.html',
         }),
-        // Копирование дополнительных файлов если нужно
         new CopyPlugin({
             patterns: [
                 {
@@ -70,12 +67,4 @@ module.exports = {
             ]
         })
     ],
-
-    devServer: {
-        static: {
-            directory: path.join(__dirname, 'dist'),
-        },
-        hot: true,
-        open: true
-    }
 };

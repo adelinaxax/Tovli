@@ -1,25 +1,31 @@
+const animateButton = (button: HTMLButtonElement, scale: number, duration: number) => {
+    button.style.transform = `scale(${scale})`;
+    button.style.transition = `transform ${duration}ms ease`;
+};
 
-const button = document.querySelector('.hero-button') as HTMLAnchorElement;
+/**
+ * Инициализация анимации кнопки
+ * @param button HTML-элемент кнопки
+ */
+export function initMainBanner(button: HTMLButtonElement) {
+    let isPressed = false;
 
-if (button) {
-    const originalTransform = button.style.transform;
-    const originalBoxShadow = button.style.boxShadow;
+    button.addEventListener('mousedown', () => {
+        isPressed = true;
+        animateButton(button, 0.95, 100);
+    });
 
-    const pressButton = () => {
-        button.style.transform = 'translateY(2px)';
-        button.style.boxShadow = '0 1px 1px rgba(0,0,0,0.1)';
-        button.style.transition = 'all 0.1s ease';
-    };
+    button.addEventListener('mouseup', () => {
+        if (isPressed) {
+            animateButton(button, 1, 200);
+            isPressed = false;
+        }
+    });
 
-    const releaseButton = () => {
-        button.style.transform = originalTransform;
-        button.style.boxShadow = originalBoxShadow;
-    };
-
-    button.addEventListener('mousedown', pressButton);
-    button.addEventListener('mouseup', releaseButton);
-    button.addEventListener('mouseleave', releaseButton);
-
-    button.addEventListener('touchstart', pressButton);
-    button.addEventListener('touchend', releaseButton);
+    button.addEventListener('mouseleave', () => {
+        if (isPressed) {
+            animateButton(button, 1, 150);
+            isPressed = false;
+        }
+    });
 }
