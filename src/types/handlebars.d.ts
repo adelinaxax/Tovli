@@ -1,4 +1,4 @@
 declare module '*.hbs' {
-    const content: (context: any) => string;
+    const content: (context: { [key: string]: unknown }) => string;
     export default content;
 }
