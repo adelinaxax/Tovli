@@ -1,0 +1,39 @@
+
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 308px; 
+    margin-left: 136px;
+    margin-top: 41px;
+    margin-bottom: 35px;
+    font-family: var(--font-jakarta);
+}
+
+.nav-list {    
+    list-style: none;
+    padding: 29.5px 0px;
+    margin: 0;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.nav-icons{
+    display: flex;
+    gap: 30px;
+}
+
+.nav-icon{
+    width: 25.9px;
+    height: 28px;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: inherit; 
+    font-family: var(--font-jakarta);
+}

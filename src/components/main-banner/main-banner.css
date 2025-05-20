@@ -3,7 +3,8 @@
     margin: 35px auto 0 auto;
     width: 100%;
     overflow: visible;
-    min-height: 826px;
+    flex: 1;
+    height: 1350px;
 }
 
 .hero-background {
@@ -169,10 +170,12 @@
     left: 164px;
     width: 1184px;
     height: 149px;
+    margin-bottom: 50px;
 }
 
 
 .hero-button{
+    position: absolute;
     background-color: #F2F2F2;
     color: #1F273B;
     margin-left: 660px;

@@ -6,52 +6,24 @@ html {
     --font-jakarta: 'Plus Jakarta Sans', sans-serif;
     --font-fuzzy: 'Fuzzy Bubbles', sans-serif;
     --font-fredoka: 'Fredoka One', 'Fuzzy Bubbles', sans-serif;
-      
+    --font-caveat: 'Caveat','Plus Jakarta Sans', cursive;
 }
 
 body {
     margin: 0;
-}
-
-.nav {
+    overflow-x: hidden;
     display: flex;
-    align-items: center;
-    gap: 308px; 
-    margin-left: 136px;
-    margin-top: 41px;
-    font-family: var(--font-jakarta);
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.nav-list {    
-    list-style: none;
-    padding: 29.5px 0px;
-    margin: 0;
-    color: var(--text-dark);
-    font-weight: 600;
-    font-size: 20px;
-    display: flex;
-    gap: 24px;
-    align-items: center;
-}
-
-.nav-icons{
-    display: flex;
-    gap: 30px;
-}
-
-.nav-icon{
-    width: 25.9px;
-    height: 28px;
-}
-
-.nav-list a {
-    text-decoration: none;
-    color: inherit; 
-    font-family: var(--font-jakarta);
+main {
+    flex: 1 0 auto;
+    position: relative;
+    padding-bottom: 200px;
 }
 
 .buttons{
-    position: absolute;
     z-index: 1;
     font-family: var(--font-jakarta);
     text-transform: uppercase;
@@ -66,5 +38,6 @@ body {
     justify-content: center;
 }
 
-
+@import "header.css";
 @import "../components/main-banner/main-banner.css";
+@import "footer.css";
