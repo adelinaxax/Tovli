@@ -1,4 +1,4 @@
-
+@import '../../style.css';
 
 .nav {
     display: flex;
@@ -36,4 +36,14 @@
     text-decoration: none;
     color: inherit; 
     font-family: var(--font-jakarta);
+}
+
+.nav-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ff6b6b;
 }

@@ -1,76 +1,71 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
-const ESLintPlugin = require('eslint-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.ts',
+    mode: 'development',
+    entry: './src/index.tsx',
 
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
+        publicPath: '/',
+        assetModuleFilename: 'assets/[name][ext]'
     },
     resolve: {
-        extensions: ['.js', '.ts']
+        extensions: ['.js', '.ts', '.jsx', '.tsx']
+    },
+
+    devServer: {
+        historyApiFallback: true,
+        hot: true,
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        port: 3000,
+        open: true
     },
 
     module: {
         rules: [
-            { test: /\.(ts|tsx)$/, loader: "ts-loader" },
             {
-                test: /\.hbs|html$/,
-                loader: 'handlebars-loader',
+                test: /\.(ts|tsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'ts-loader',
+                    options: {
+                        transpileOnly: true
+                    }
+                }
             },
             {
-                test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader'
-                ]
-            },
+                test: /\.css$/i,
+                use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+              },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/,
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
                 generator: {
-                    filename: (pathData) => {
-                        if (pathData.filename.includes('main-banner')) {
-                            return 'components/main-banner/assets/[name][ext]';
-                        }
-                        return 'images/[name][ext]';
-                    }
+                    filename: 'assets/[name][ext]'
                 }
             },
         ]
     },
 
     plugins: [
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].css'
-        }),
         new HtmlWebpackPlugin({
-            template: './src/index.hbs',
+            template: './src/index.html',
             filename: 'index.html',
+            inject: true
         }),
-        new CopyPlugin({
+        new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: 'src/components/main-banner/assets',
-                    to: 'components/main-banner/assets',
-                    noErrorOnMissing: true
+                    from: path.resolve(__dirname, 'src/assets'),
+                    to: path.resolve(__dirname, 'dist/assets'),
                 },
-                {
-                    from: 'src/images',
-                    to: 'images',
-                    noErrorOnMissing: true
-                },
-            ]
+            ],
         }),
-        new ESLintPlugin({
-            extensions: ['js', 'ts'],
-            emitError: true,
-            failOnError: false,
-        })
     ],
 };

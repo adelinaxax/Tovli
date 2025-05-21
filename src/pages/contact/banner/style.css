@@ -1,8 +1,9 @@
-@import "/src/styles/style.css";
+@import '../../../style.css';
 
 
 body {
     overflow-x: hidden;
+    height: 1850px;
 }
 
 .contact-form-container {
