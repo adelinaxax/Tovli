@@ -1,16 +1,26 @@
 import React from 'react';
 import './style.css';
 
+import purple from '../../../assets/purple.svg';
+import green from '../../../assets/green.svg';
+import weirdo from '../../../assets/weirdo.png';
+import weirdo2 from '../../../assets/weirdo2.png';
+import paper from '../../../assets/paper.png';
+import affiliates from '../../../assets/affiliates.svg';
+import socialMedia from '../../../assets/social_media.svg';
+import partnerships from '../../../assets/partnerships.svg';
+import wholesale from '../../../assets/wholesale.svg';
+
 const Banner: React.FC = () => {
   return (
     <section className="main-content">
       <div className="form-background"></div>
       <div className="decorative-elements">
-        <img src="assets/purple.svg" className="purple" alt="Purple decor" />
-        <img src="assets/green.svg" className="green" alt="Green decor" />
-        <img src="assets/weirdo.png" className="weirdo" alt="Weirdo decor" />
-        <img src="assets/weirdo2.png" className="weirdo2" alt="Weirdo 2 decor" />
-        <img src="assets/paper.png" className="paper" alt="Paper decor" />
+        <img src={purple} className="purple" alt="Purple decor" />
+        <img src={green} className="green" alt="Green decor" />
+        <img src={weirdo} className="weirdo" alt="Weirdo decor" />
+        <img src={weirdo2} className="weirdo2" alt="Weirdo 2 decor" />
+        <img src={paper} className="paper" alt="Paper decor" />
       </div>
       <div className="contact-form-container">
         <div className="form-title">
@@ -49,7 +59,7 @@ const Banner: React.FC = () => {
         
         <div className="contacts-grid">
           <div className="contact-item">
-            <img src="assets/affiliates.svg" alt="Affiliates" className="contact-icon" />
+            <img src={affiliates} alt="Affiliates" className="contact-icon" />
             <div>
               <div className="contact-title">Affiliates</div>
               <div className="contact-email">
@@ -58,7 +68,7 @@ const Banner: React.FC = () => {
             </div>
           </div>
           <div className="contact-item">
-            <img src="assets/social_media.svg" alt="Social Media" className="contact-icon" />
+            <img src={socialMedia} alt="Social Media" className="contact-icon" />
             <div>
               <div className="contact-title">Social Media</div>
               <div className="contact-email">
@@ -67,7 +77,7 @@ const Banner: React.FC = () => {
             </div>
           </div>
           <div className="contact-item">
-            <img src="assets/partnerships.svg" alt="Partnerships" className="contact-icon" />
+            <img src={partnerships} alt="Partnerships" className="contact-icon" />
             <div>
               <div className="contact-title">Partnerships</div>
               <div className="contact-email">
@@ -76,7 +86,7 @@ const Banner: React.FC = () => {
             </div>
           </div>
           <div className="contact-item">
-            <img src="assets/wholesale.svg" alt="Wholesale" className="contact-icon" />
+            <img src={wholesale} alt="Wholesale" className="contact-icon" />
             <div>
               <div className="contact-title">Wholesale</div>
               <div className="contact-email">
